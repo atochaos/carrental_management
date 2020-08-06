@@ -28,6 +28,7 @@ public class PolicyHandler{
     public void wheneverCarRented_CarUpdate(@Payload CarRented carRented){
 
         System.out.println("!!!!!!!!!!! wheneverCarRented_CarUpdate 확인 !!!!!!!!!!! : " + carRented.toJson());
+        System.out.println("@@@@@ wheneverCarRented_CarUpdate ProcStatus : " + carRented.getProcStatus());
 
         // 현재일자
         Locale currentLocale = new Locale("KOREAN", "KOREA");
@@ -56,12 +57,12 @@ public class PolicyHandler{
                 System.out.println("##### listenerCarUpdate [CAR_RENTED] : " + carRented.toJson());
             }
         }
-
     }
     @StreamListener(KafkaProcessor.INPUT)
     public void wheneverCarRentalCanceled_CarUpdate(@Payload CarRentalCanceled carRentalCanceled){
 
         System.out.println("!!!!!!!!!!! wheneverCarRentalCanceled_CarUpdate 확인 !!!!!!!!!!! : " + carRentalCanceled.toJson());
+        System.out.println("@@@@@ wheneverCarRentalCanceled_CarUpdate ProcStatus : " + carRentalCanceled.getProcStatus());
 
         if (carRentalCanceled.isMe()) {
 
@@ -77,6 +78,7 @@ public class PolicyHandler{
 
             System.out.println("##### listener CarUpdate [CAR_RENTAL_CANCELED] : " + carRentalCanceled.toJson());
         }
+
     }
 
 }
